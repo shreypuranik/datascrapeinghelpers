@@ -119,7 +119,6 @@ class DataGather{
     function getHTML(){
         switch($this->method){
             case "snoopy":
-
                 return $this->_getHTMLFromURL_snoopy();
                 break;
             case "file_get_contents":
