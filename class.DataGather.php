@@ -13,10 +13,9 @@ class DataGather{
 
     protected $html = "";
     protected $method = "file_get_contents";
-    protected $snoopy;
+    protected $snoopy = false;
     protected $retryMaxLimit = 10;
     protected $url;
-    protected $snoopy= false;
     protected $snoopyObj = "";
 
     function __construct($method="file_get_contents"){
@@ -122,10 +121,10 @@ class DataGather{
                 return $this->_getHTMLFromURL_snoopy();
                 break;
             case "file_get_contents":
-                return $this->_getHTMLFromURL_fgc($this->url);
+                return $this->_getHTMLFromURL_fgc();
                 break;
             default:
-                return $this->_getHTMLFromURL_fgc($this->url);
+                return $this->_getHTMLFromURL_fgc();
 
         }
     }
@@ -146,8 +145,6 @@ class DataGather{
     }
 
 }
-
-
 
 
 
