@@ -16,6 +16,8 @@ class DataGather{
     protected $snoopy;
     protected $retryMaxLimit = 10;
     protected $url;
+    protected $snoopy= false;
+    protected $snoopyObj = "";
 
     function __construct($method="file_get_contents"){
         $this->setMethod($method); //set the method that this class will use
@@ -29,7 +31,18 @@ class DataGather{
     function setMethod($method){
         $this->method = $method;
         if ($this->method=="Snoopy"|| $this->method == "snoopy"){
-            $this->snoopy = new Snoopy(); //instantiate new Snoopy object
+            $this->snoopyObj = new Snoopy(); //instantiate new Snoopy object
+        }
+    }
+
+    /**
+     * Declare Snoopy as method of HTML retrieval
+     * @param boolean
+     */
+    function setSnoopy($status){
+        if ($status){
+            $this->snoopy = true;
+            $this->setMethod('snoopy');
         }
     }
 
@@ -74,12 +87,12 @@ class DataGather{
 
     function _getHTMLFromURL_snoopy(){
         for($i=0;$i<$this->retryMaxLimit;$i++){
-            $this->snoopy->fetch($this->url);
-            if ($this->snoopy->results){
+            $this->snoopyObj->fetch($this->url);
+            if ($this->snoopyObj->results){
                 break;
             }
         }
-        return $this->snoopy->results;
+        return $this->snoopyObj->results;
     }
 
     /**
@@ -106,7 +119,8 @@ class DataGather{
     function getHTML(){
         switch($this->method){
             case "snoopy":
-                return $this->_getHTMLFromURL_snoopy($this->url);
+
+                return $this->_getHTMLFromURL_snoopy();
                 break;
             case "file_get_contents":
                 return $this->_getHTMLFromURL_fgc($this->url);
@@ -133,4 +147,9 @@ class DataGather{
     }
 
 }
+
+
+
+
+
 

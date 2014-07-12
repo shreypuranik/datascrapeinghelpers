@@ -8,7 +8,8 @@ $DG = new DataGather();
 $DG->setURL('http://www.php.net');
 
 Default method of retrieval is file_get_contents, but you can use Snoopy too!
-$DG->setMethod('Snoopy');
+
+$DG->setSnoopy(true);
 
 To get HTML, run: $DG->getHTML();
 
