@@ -72,6 +72,7 @@ class DataGather{
         for($i=0;$i<$this->retryMaxLimit;$i++){
             $html = file_get_contents($this->url);
             if ($html) break;
+            sleep($i);//pause before retrying
         }
 
         return $html;
@@ -90,6 +91,7 @@ class DataGather{
             if ($this->snoopyObj->results){
                 break;
             }
+            sleep($i); //pause before retrying
         }
         return $this->snoopyObj->results;
     }
