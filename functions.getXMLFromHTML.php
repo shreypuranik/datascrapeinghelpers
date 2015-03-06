@@ -6,7 +6,8 @@
  * HTML retrieval methods when I get the chance
  */
 
-function getXMLFromHTML($link){
+function getXMLFromHTML($link)
+{
 
     for($i=0;$i<10;$i++){
         $html = file_get_contents($link);
