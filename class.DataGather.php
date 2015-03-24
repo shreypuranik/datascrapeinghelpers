@@ -62,7 +62,8 @@ class DataGather
      * Set the max retry limit
      * @param limit
      */
-    function setRetryMaxLimit($limit){
+    function setRetryMaxLimit($limit)
+    {
         $this->retryMaxLimit = $limit;
     }
 
@@ -73,7 +74,8 @@ class DataGather
      */
 
 
-   function _getHTMLFromURL_fgc(){
+   function _getHTMLFromURL_fgc()
+   {
         for($i=0;$i<$this->retryMaxLimit;$i++){
             $html = file_get_contents($this->url);
             if ($html) break;
@@ -90,7 +92,8 @@ class DataGather
     * @return string
     */
 
-    function _getHTMLFromURL_snoopy(){
+    function _getHTMLFromURL_snoopy()
+    {
         for($i=0;$i<$this->retryMaxLimit;$i++){
             $this->snoopyObj->fetch($this->url);
             if ($this->snoopyObj->results){
@@ -107,7 +110,8 @@ class DataGather
      * @param HTML
      * @return string
      */
-    function _getXMLFromHTML($html){
+    function _getXMLFromHTML($html)
+    {
         $doc = new DomDocument();
         @$doc->loadHTML($html);
         $xml = simplexml_import_dom($doc);
@@ -122,7 +126,8 @@ class DataGather
      * configured
      * @return HTML
      */
-    function getHTML(){
+    function getHTML()
+    {
         switch($this->method){
             case "snoopy":
                 return $this->_getHTMLFromURL_snoopy();
@@ -142,16 +147,21 @@ class DataGather
      * methods have been configured
      * @return HTML
      */
-    function getXML(){
+    function getXML()
+    {
         $html = $this->getHTML();
         $doc = new DomDocument();
         @$doc->loadHTML($html);
         $xml = simplexml_import_dom($doc);
 
-        if ($xml) return $xml;
+        if ($xml){
+            return $xml;
+        }
     }
 
 }
+
+?>
 
 
 
