@@ -1,4 +1,4 @@
-<?
+<?php
 include_once("Snoopy.class.php");
 
 /**
@@ -9,7 +9,8 @@ include_once("Snoopy.class.php");
  * use by class methods.
  */
 
-class DataGather{
+class DataGather
+{
 
     protected $html = "";
     protected $method = "file_get_contents";
@@ -18,7 +19,8 @@ class DataGather{
     protected $url;
     protected $snoopyObj = "";
 
-    function __construct($method="file_get_contents"){
+    function __construct($method="file_get_contents")
+    {
         $this->setMethod($method); //set the method that this class will use
     }
 
@@ -27,7 +29,8 @@ class DataGather{
      * retrieved
      * @param method
      */
-    function setMethod($method){
+    function setMethod($method)
+    {
         $this->method = $method;
         if ($this->method=="Snoopy"|| $this->method == "snoopy"){
             $this->snoopyObj = new Snoopy(); //instantiate new Snoopy object
@@ -38,7 +41,8 @@ class DataGather{
      * Declare Snoopy as method of HTML retrieval
      * @param boolean
      */
-    function setSnoopy($status){
+    function setSnoopy($status)
+    {
         if ($status){
             $this->snoopy = true;
             $this->setMethod('snoopy');
@@ -49,7 +53,8 @@ class DataGather{
      * Set the URL
      * @param url
      */
-    function setURL($url){
+    function setURL($url)
+    {
         $this->url = $url;
     }
 
