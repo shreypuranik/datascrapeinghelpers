@@ -21,4 +21,4 @@ Data Scraper Helpers - May 2014
 
 A collection of functions developed over time to help with personal scraping projects.
 
-(The PHP class makes use of the Snoopy class. This isn't contained in the repo). 
+(The PHP class makes use of the Snoopy class. This isn't contained in the repo, but can add if requested enough)
